@@ -4,7 +4,12 @@ const express = require("express");
 const fs = require("fs");
 const util = require("util");
 const path = require("path")
+const uuid = require("uuid")
 // ====================================
+
+// Promise Modules
+const writeFileAsync = util.promisify(fs.writeFile);
+const readFileAsync = util.promisify(fs.readFile);
 
 // Express Config 
 // ====================================
@@ -31,12 +36,25 @@ app.get("/notes", (req, res) => {
 });
 
 //api/notes
-app.get("/api/notes", (req, res) => {
-    res.json([{
-        id: 1,
-        text: "Hello",
-        title: "blacchchchch"
-    }])
+// get
+app.get("/api/notes", async (req, res) => {
+    const db = JSON.parse(await readFileAsync(__dirname + '/db/db.json', 'utf8'));
+    return res.json(db);
+});
+// create new note post
+app.post("/api/notes", async (req, res) => {
+    try {
+        const db = JSON.parse(await readFileAsync(__dirname + '/db/db.json', 'utf8'));
+        const note = { ...req.body, id: uuid() };
+        db.push(note);
+        if (err) throw err;
+        await writeFileAsync(__dirname + '/db/db.json', JSON.stringify(db));
+        console.log(db);
+        return res.json(db);
+    }
+    catch (err) {
+        console.log(err);
+    }
 })
 
 //all
