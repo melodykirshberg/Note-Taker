@@ -4,7 +4,6 @@ const express = require("express");
 const fs = require("fs");
 const util = require("util");
 const path = require("path")
-const uuid = require("uuid")
 // ====================================
 
 // Promise Modules
@@ -45,9 +44,8 @@ app.get("/api/notes", async (req, res) => {
 app.post("/api/notes", async (req, res) => {
     try {
         const db = JSON.parse(await readFileAsync(__dirname + '/db/db.json', 'utf8'));
-        const note = { ...req.body, id: uuid() };
+        const note = { ...req.body};
         db.push(note);
-        if (err) throw err;
         await writeFileAsync(__dirname + '/db/db.json', JSON.stringify(db));
         console.log(db);
         return res.json(db);
