@@ -4,6 +4,7 @@ const express = require("express");
 const fs = require("fs");
 const util = require("util");
 const path = require("path")
+const uuid = require("uuid/v4");
 // ====================================
 
 // Promise Modules
@@ -44,7 +45,7 @@ app.get("/api/notes", async (req, res) => {
 app.post("/api/notes", async (req, res) => {
     try {
         const db = JSON.parse(await readFileAsync(__dirname + '/db/db.json', 'utf8'));
-        const note = { ...req.body};
+        const note = { ...req.body, idL uuid() };
         db.push(note);
         await writeFileAsync(__dirname + '/db/db.json', JSON.stringify(db));
         console.log(db);
@@ -54,11 +55,23 @@ app.post("/api/notes", async (req, res) => {
         console.log(err);
     }
 })
-
+// delete
+app.delete('/api/notes/:id', async (req, res) => {
+    const db = JSON.parse(await readFileAsync(__dirname + '/db/db.json', 'utf8'));
+    const id = req.params.id;
+    const newdb = db.filter(note => {
+        return note.id !== id;
+    });
+    await writeFileAsync(__dirname + '/db/db.json', JSON.stringify(newdb));
+        console.log(newdb);
+        return res.json(newdb);
+});
 //all
 app.get("*", (req, res) => {
     res.redirect("/");
 });
+// ====================================
+
 
 // Listener
 // ====================================
