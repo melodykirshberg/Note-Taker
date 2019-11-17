@@ -15,7 +15,7 @@ In your terminal type:
 * For further instructions, visit https://help.github.com.
 
 ## Screenshot
-![alt text](public/assets/Note Taker.gif "Screenshot")
+![alt text](public/assets/notetaker.gif "Screenshot")
 [Live Version](https://infinite-oasis-71073.herokuapp.com/)
 ## Credits
 [UABootCamp](https://bootcamp.ce.arizona.edu/coding/)
