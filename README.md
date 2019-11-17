@@ -5,7 +5,7 @@ This is an application that can be used to write, save, and delete notes. This a
 
 ## Table of Contents
 * [Installation](#installation)
-* [Screenshot](#screenshot)
+* [Demo](#demo)
 * [Credits](#credits)
 
 ## Installation
@@ -14,8 +14,8 @@ In your terminal type:
 * Open in Visual Studio to build and run.
 * For further instructions, visit https://help.github.com.
 
-## Screenshot
-![alt text](public/assets/notetaker.gif "Screenshot")
+## Demo
+![alt text](public/assets/notetaker.gif "Demo")
 [Live Version](https://infinite-oasis-71073.herokuapp.com/)
 ## Credits
 [UABootCamp](https://bootcamp.ce.arizona.edu/coding/)
