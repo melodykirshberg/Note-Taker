@@ -21,7 +21,7 @@ Express - HTML - CSS - Bootstrap - JavaScript
 ## Demo
 ![alt text](public/assets/notetaker.gif "Demo")
 
-Live link: https://infinite-oasis-71073.herokuapp.com/
+Live link: https://verlitas-notetaker.herokuapp.com/
 
 ## Credits
 [Melody Kirshberg](https://github.com/verlitas)  
